@@ -245,7 +245,7 @@ def log_loss(y_true, y_pred):
     return log_loss
 
 
-def confusion_matrix_1(y_true, y_pred):
+def confusion_matrix(y_true, y_pred):
     """
     Создает матрицу ошибок (confusion matrix).
     
@@ -260,8 +260,8 @@ def confusion_matrix_1(y_true, y_pred):
         Матрица ошибок.
     """
     tp, fp, fn, tn = calc_tp_fp_fn_tn(y_true, y_pred)
-    return [ [tp, fn],
-            [fp, tn]]
+    return [[tn, fp],
+            [fn, tp]]
 
 def mean_absolute_error(y_true, y_pred):
     """

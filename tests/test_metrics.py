@@ -2,7 +2,9 @@
 
 import unittest
 import numpy as np
-from sklearn.metrics import confusion_matrix
+import sklearn
+import sklearn.metrics
+import utils
 from utils.metrics import (
     accuracy,
     precision,
@@ -13,7 +15,7 @@ from utils.metrics import (
     r2_score,
     roc_auc_score,
     log_loss,
-    confusion_matrix_1,
+    confusion_matrix,
     mean_absolute_error,
     explained_variance_score
 )
@@ -29,57 +31,56 @@ class TestMetrics(unittest.TestCase):
 
     def test_accuracy(self):
         result = accuracy(self.y_true_binary, self.y_pred_binary)
-        expected = 0.7
+        expected = sklearn.metrics.accuracy_score(self.y_true_binary, self.y_pred_binary)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_precision(self):
         result = precision(self.y_true_binary, self.y_pred_binary)
-        expected = 0.6
+        expected = sklearn.metrics.precision_score(self.y_true_binary, self.y_pred_binary)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_recall(self):
         result = recall(self.y_true_binary, self.y_pred_binary)
-        expected = 0.75
+        expected = sklearn.metrics.recall_score(self.y_true_binary, self.y_pred_binary)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_f1_score(self):
         result = f1_score(self.y_true_binary, self.y_pred_binary)
-        expected = 0.6666666666666666
+        expected = sklearn.metrics.f1_score(self.y_true_binary, self.y_pred_binary)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_mean_squared_error(self):
         result = mean_squared_error(self.y_true_regression, self.y_pred_regression)
-        expected = 0.375
+        expected = sklearn.metrics.mean_squared_error(self.y_true_regression, self.y_pred_regression)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_root_mean_squared_error(self):
         result = root_mean_squared_error(self.y_true_regression, self.y_pred_regression)
-        expected = np.sqrt(0.375)
+        expected = sklearn.metrics.root_mean_squared_error(self.y_true_regression, self.y_pred_regression)
+        # np.sqrt(0.375)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_r2_score(self):
         result = r2_score(self.y_true_regression, self.y_pred_regression)
-        expected = 0.9486081370449679
+        expected = sklearn.metrics.r2_score(self.y_true_regression, self.y_pred_regression)
+        # 0.9486081370449679
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_confusion_matrix(self):
-        result = confusion_matrix_1(self.y_true_binary, self.y_pred_binary)
-        print("ASDSAD")
-        print(type(confusion_matrix(self.y_true_binary, self.y_pred_binary)))
-        print(confusion_matrix(self.y_true_binary, self.y_pred_binary))
-        print(result)
-        # matrix = [ [tp, fn],
-        #            [fp, tn]]
-        # self.assertEqual(result, matrix)
+        result = np.array(utils.metrics.confusion_matrix(self.y_true_binary, self.y_pred_binary))
+        matrix = sklearn.metrics.confusion_matrix(self.y_true_binary, self.y_pred_binary)
+        self.assertTrue(np.array_equal(result, matrix))
 
     def test_mean_absolute_error(self):
         result = mean_absolute_error(self.y_true_regression, self.y_pred_regression)
-        expected = 0.5
+        expected = sklearn.metrics.mean_absolute_error(self.y_true_regression, self.y_pred_regression)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_explained_variance_score(self):
+        
         result = explained_variance_score(self.y_true_regression, self.y_pred_regression)
-        expected = 0.9571111111111112
+        expected = sklearn.metrics.explained_variance_score(self.y_true_regression, self.y_pred_regression)
+        # 0.9571111111111112
         self.assertAlmostEqual(result, expected, places=5)
 
 if __name__ == "__main__":
