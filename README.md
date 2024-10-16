@@ -1,6 +1,22 @@
+# ML Library
+
+![Python](https://img.shields.io/badge/python-3.6%2B-blue)
+![GitHub](https://img.shields.io/badge/github-matteoxpo-orange)
+![Telegram](https://img.shields.io/badge/telegram-xpomin-blue)
+
+## Описание
+
+Это библиотека для машинного обучения, разработанная с целью обучения и глубокого понимания методов машинного обучения. Библиотека имеет функционал, схожий с популярной библиотекой [scikit-learn](https://scikit-learn.org/).
+
+## Цели
+
+- **Обучение**: Библиотека создаётся для того, чтобы автор смог самостоятельно написать и понять алгоритмы машинного обучения.
+- **Понимание**: Основное внимание уделяется углубленному пониманию того, как работают различные методы, чтобы в будущем можно было применять их более эффективно.
+
+## Структура проекта
 ```bash
 ml-lib/
-│   #DONE   
+│  
 ├── data/                            # Для хранения и обработки данных
 │   ├── __init__.py
 │   ├── datasets.py                  # Тестовые датасеты
@@ -40,16 +56,16 @@ ml-lib/
 │   ├── __init__.py
 │   ├── collaborative_filtering.py   # Коллаборативная фильтрация
 │   └── matrix_factorization.py      # Факторизация матриц
-│   #DONE
+│
 ├── utils/                           # Вспомогательные функции
 │   ├── __init__.py
 │   ├── metrics.py                   # Метрики качества (MSE, Accuracy и т.д.)
 │   └── utils.py                     # Общие утилиты (например, функции для отладки)
 │
 └── tests/                           # Тесты для каждой модели
-    ├── __init__.py
     ├── test_knn.py
-    ├── test_linear_regression.py
-    ├ # structure in progress
-    └
+    ├── # ...
+    ├── # other test files
+    ├── # ...
+    └── test_linear_regression.py
 ```
