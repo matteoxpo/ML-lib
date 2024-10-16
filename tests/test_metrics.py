@@ -57,13 +57,11 @@ class TestMetrics(unittest.TestCase):
     def test_root_mean_squared_error(self):
         result = root_mean_squared_error(self.y_true_regression, self.y_pred_regression)
         expected = sklearn.metrics.root_mean_squared_error(self.y_true_regression, self.y_pred_regression)
-        # np.sqrt(0.375)
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_r2_score(self):
         result = r2_score(self.y_true_regression, self.y_pred_regression)
         expected = sklearn.metrics.r2_score(self.y_true_regression, self.y_pred_regression)
-        # 0.9486081370449679
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_confusion_matrix(self):
@@ -77,10 +75,8 @@ class TestMetrics(unittest.TestCase):
         self.assertAlmostEqual(result, expected, places=5)
 
     def test_explained_variance_score(self):
-        
         result = explained_variance_score(self.y_true_regression, self.y_pred_regression)
         expected = sklearn.metrics.explained_variance_score(self.y_true_regression, self.y_pred_regression)
-        # 0.9571111111111112
         self.assertAlmostEqual(result, expected, places=5)
 
 if __name__ == "__main__":
