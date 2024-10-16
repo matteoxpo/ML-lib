@@ -1,8 +1,6 @@
 # ML Library
 
 ![Python](https://img.shields.io/badge/python-3.6%2B-blue)
-![GitHub](https://img.shields.io/badge/github-matteoxpo-orange)
-![Telegram](https://img.shields.io/badge/telegram-xpomin-blue)
 
 ## Описание
 
@@ -69,3 +67,5 @@ ml-lib/
     ├── # ...
     └── test_linear_regression.py
 ```
+![GitHub](https://img.shields.io/badge/github-matteoxpo-orange)
+![Telegram](https://img.shields.io/badge/telegram-xpomin-blue)

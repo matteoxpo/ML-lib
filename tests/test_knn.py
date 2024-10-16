@@ -1,6 +1,5 @@
 import unittest
 import numpy as np
-import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier as SklearnKNeighborsClassifier
 from sklearn.neighbors import KNeighborsRegressor as SklearnKNeighborsRegressor
 from data.datasets import load_iris_dataset, load_boston_dataset
