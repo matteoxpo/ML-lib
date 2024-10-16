@@ -8,7 +8,7 @@ from .metrics import (
     r2_score,
     roc_auc_score,
     log_loss,
-    confusion_matrix,
+    confusion_matrix_1,
     explained_variance_score
 )
 

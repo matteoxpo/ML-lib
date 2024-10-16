@@ -41,17 +41,16 @@ def calc_tp_fp_fn_tn(y_true, y_pred):
         (TP, FP, FN, TN)
     """
     length = check_size(y_true, y_pred)
-
     tp = fp = fn = tn = 0
 
     for i in range(length):
         if y_true[i] == 1 and y_pred[i] == 1:  # TP
             tp += 1
-        elif y_true[i] == 1 and y_pred[i] == -1:  # FN
+        elif y_true[i] == 1 and y_pred[i] == 0:  # FN
             fn += 1
-        elif y_true[i] == -1 and y_pred[i] == 1:  # FP
+        elif y_true[i] == 0 and y_pred[i] == 1:  # FP
             fp += 1
-        elif y_true[i] == -1 and y_pred[i] == -1:  # TN
+        elif y_true[i] == 0 and y_pred[i] == 0:  # TN
             tn += 1
             
     return tp, fp, fn, tn
@@ -72,7 +71,7 @@ def precision(y_true, y_pred):
     float
         Значение точности.
     """
-    tp, fp, fn, tn = calc_tp_fp_fn_tn(y_pred, y_true)
+    tp, fp, fn, tn = calc_tp_fp_fn_tn(y_true, y_pred)
     
     if (tp + fp) == 0:
         return 0.0
@@ -94,7 +93,7 @@ def recall(y_true, y_pred):
     float
         Значение полноты.
     """
-    tp, fp, fn, tn = calc_tp_fp_fn_tn(y_pred, y_true)
+    tp, fp, fn, tn = calc_tp_fp_fn_tn(y_true, y_pred)
     
     if (tp + fn) == 0:
         return 0.0
@@ -116,10 +115,13 @@ def f1_score(y_true, y_pred):
     float
         Значение F1-меры.
     """
-    precision = precision(y_true, y_pred)
-    recall = recall(y_true, y_pred)
+    precision_val = precision(y_true, y_pred)
+    recall_val = recall(y_true, y_pred)
     
-    return (2 * precision * recall) / (precision + recall)
+    if precision_val + recall_val == 0:
+        return 0.0
+    
+    return (2 * precision_val * recall_val) / (precision_val + recall_val)
 
 
 def mean_squared_error(y_true, y_pred):
@@ -157,7 +159,7 @@ def root_mean_squared_error(y_true, y_pred):
     float
         Значение корня из среднеквадратичной ошибки.
     """
-    return np.sqrt(mean_absolute_error(y_true, y_pred))
+    return np.sqrt(mean_squared_error(y_true, y_pred))
 
 
 def r2_score(y_true, y_pred):
@@ -196,14 +198,14 @@ def roc_auc_score(y_true, y_scores):
     float
         Значение AUC.
     """
-    thresholds = thresholds = np.unique(y_scores)
+    thresholds = np.unique(y_scores)
     trps = []
     fprs = []
     for threshold in thresholds:
         y_pred = [1 if score > threshold else 0 for score in y_scores]
-        tp, fp, fn, tn = calc_tp_fp_fn_tn(y_pred, y_true)
-        trp = tp / (tp + fn)
-        fpr = fp / (fp + tn)
+        tp, fp, fn, tn = calc_tp_fp_fn_tn(y_true, y_pred)
+        trp = tp / (tp + fn) if (tp + fn) > 0 else 0
+        fpr = fp / (fp + tn) if (fp + tn) > 0 else 0
         trps.append(trp)
         fprs.append(fpr)
     
@@ -243,7 +245,7 @@ def log_loss(y_true, y_pred):
     return log_loss
 
 
-def confusion_matrix(y_true, y_pred):
+def confusion_matrix_1(y_true, y_pred):
     """
     Создает матрицу ошибок (confusion matrix).
     
@@ -310,4 +312,4 @@ def explained_variance_score(y_true, y_pred):
     if var_y_true == 0:
         raise ValueError("Дисперсия истинных значений равна нулю.")
     
-    return 1 - (np.var(y_true - y_pred) / np.var(y_true))
+    return 1 - (np.var(y_true - y_pred) / var_y_true)
