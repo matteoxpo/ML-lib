@@ -9,11 +9,11 @@ from .metrics import (
     roc_auc_score,
     log_loss,
     confusion_matrix,
-    explained_variance_score
+    explained_variance_score,
+    sigmoid
 )
 
 from .utils import check_size
-
 __all__ = [
     'accuracy',
     'precision',
@@ -26,5 +26,6 @@ __all__ = [
     'log_loss',
     'confusion_matrix',
     'explained_variance_score',
-    'check_size'
+    'check_size',
+    'sigmoid'
 ]

@@ -38,3 +38,5 @@ def load_mnist_dataset():
     X_test = data.iloc[:, 1:]
 
     return (X_train, y_train), (X_test, y_test)
+
+

@@ -313,3 +313,7 @@ def explained_variance_score(y_true, y_pred):
         raise ValueError("Дисперсия истинных значений равна нулю.")
     
     return 1 - (np.var(y_true - y_pred) / var_y_true)
+
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))

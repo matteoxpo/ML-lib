@@ -1,9 +1,14 @@
 import numpy as np
 from collections import Counter
 from .estimator import Estimator
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
-class KNeighborBase(Estimator):
+class KNNBase(Estimator):
+    def __init__(self, n_neighbors=5, weights='uniform', p=2):
+        self.n_neighbors = n_neighbors
+        self.weights = weights
+        self.p = p
+        
     def fit(self, X, y):
         self.X_train = X
         self.y_train = y
@@ -27,12 +32,8 @@ class KNeighborBase(Estimator):
     def _predict(self, x):
         pass 
 
-class KNeighborsClassifier(KNeighborBase):
-    def __init__(self, n_neighbors=5, weights='uniform', p=2):
-        self.n_neighbors = n_neighbors
-        self.weights = weights
-        self.p = p
 
+class KNeighborsClassifier(KNNBase):
     def _predict(self, x):
         distances = np.linalg.norm(self.X_train - x, ord=self.p, axis=1)
         k_indices = np.argsort(distances)[:self.n_neighbors]
@@ -48,12 +49,8 @@ class KNeighborsClassifier(KNeighborBase):
                 weighted_votes[label] += weight
             return weighted_votes.most_common(1)[0][0]
 
-class KNeighborsRegressor(KNeighborBase):
-    def __init__(self, n_neighbors=5, weights='uniform', p=2):
-        self.n_neighbors = n_neighbors
-        self.weights = weights
-        self.p = p
 
+class KNeighborsRegressor(KNNBase):
     def _predict(self, x):
         distances = np.linalg.norm(self.X_train - x, ord=self.p, axis=1)
         k_indices = np.argsort(distances)[:self.n_neighbors]

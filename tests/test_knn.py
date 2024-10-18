@@ -2,8 +2,8 @@ import unittest
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier as SklearnKNeighborsClassifier
 from sklearn.neighbors import KNeighborsRegressor as SklearnKNeighborsRegressor
-from data.datasets import load_iris_dataset, load_boston_dataset
-from models.knn import KNeighborsClassifier, KNeighborsRegressor
+from data import load_iris_dataset, load_boston_dataset
+from models import KNeighborsClassifier, KNeighborsRegressor
 
 class TestKNeighbors(unittest.TestCase):
 
