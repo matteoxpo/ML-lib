@@ -79,7 +79,7 @@ class DecisionTreeBase(Estimator):
     Базовый класс для дерева решений (классификатор и регрессор).
     """
 
-    def __init__(self, criterion='gini', max_depth=None, min_samples_split=2):
+    def __init__(self, criterion, max_depth=None, min_samples_split=2):
         """
         Инициализация параметров дерева решений.
         

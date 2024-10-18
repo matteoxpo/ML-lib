@@ -26,13 +26,11 @@ ml-lib/
 │   └── preprocessing.py        #DONE
 ├── models/
 │   ├── ensemble/
-│   │   ├── __init__.py                        
-│   │   ├── bagging.py                         
-│   │   ├── blending.py                        
-│   │   ├── boosting.py                        
-│   │   ├── gradient_boosting_classifier.py        #DONE
-│   │   ├── gradient_boosting_regressor.py         #DONE
-│   │   └── stacking.py                        
+│   │   ├── __init__.py             
+│   │   ├── bagging.py              
+│   │   ├── blending.py             
+│   │   ├── gradient_boosting.py        #DONE
+│   │   └── stacking.py             
 │   ├── unsupervised/
 │   │   ├── __init__.py    
 │   │   ├── kemas.py       
@@ -57,10 +55,11 @@ ml-lib/
 │   ├── collabarative_filtering.py    
 │   └── matrix_factorization.py       
 ├── tests/
-│   ├── test_datasets.py        #DONE
-│   ├── test_knn.py             #DONE
-│   ├── test_linear.py          #DONE
-│   └── test_metrics.py         #DONE
+│   ├── test_datasets.py             #DONE
+│   ├── test_decision_tree.py        #DONE
+│   ├── test_knn.py                  #DONE
+│   ├── test_linear.py               #DONE
+│   └── test_metrics.py              #DONE
 └── utils/
     ├── __init__.py    
     ├── metrics.py         #DONE
