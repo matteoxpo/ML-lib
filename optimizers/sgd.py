@@ -1,7 +1,7 @@
 import numpy as np
 
 class SGD:
-    def __init__(self, learning_rate=0.01, momentum=0.0, batch_size=None, shuffle=True):
+    def __init__(self, learning_rate=0.01, momentum=0.0, batch_size=1, shuffle=True):
         self.learning_rate = learning_rate
         self.momentum = momentum
         self.batch_size = batch_size

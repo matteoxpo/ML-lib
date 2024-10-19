@@ -1,1 +1,1 @@
-from gradient_boosting import GradientBoostingRegressor, GradientBoostingClassifier
+from .gradient_boosting import GradientBoostingDecisionTreeRegressor, GradientBoostingDecisionTreeClassifier
