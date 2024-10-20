@@ -27,7 +27,7 @@ ml-lib/
 ├── models/
 │   ├── ensemble/
 │   │   ├── __init__.py             
-│   │   ├── bagging.py              
+│   │   ├── bagging.py                  #DONE
 │   │   ├── blending.py             
 │   │   ├── gradient_boosting.py        #DONE
 │   │   └── stacking.py             
@@ -55,11 +55,13 @@ ml-lib/
 │   ├── collabarative_filtering.py    
 │   └── matrix_factorization.py       
 ├── tests/
-│   ├── test_datasets.py             #DONE
-│   ├── test_decision_tree.py        #DONE
-│   ├── test_knn.py                  #DONE
-│   ├── test_linear.py               #DONE
-│   └── test_metrics.py              #DONE
+│   ├── test_bagging.py                  #DONE
+│   ├── test_datasets.py                 #DONE
+│   ├── test_decision_tree.py            #DONE
+│   ├── test_gradient_boosting.py        #DONE
+│   ├── test_knn.py                      #DONE
+│   ├── test_linear.py                   #DONE
+│   └── test_metrics.py                  #DONE
 └── utils/
     ├── __init__.py    
     ├── metrics.py         #DONE
