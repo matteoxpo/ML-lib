@@ -1,1 +1,2 @@
-from .gradient_boosting import GradientBoostingDecisionTreeRegressor, GradientBoostingDecisionTreeClassifier
+from .gradient_boosting import GradientBoostingDecisionTreeRegressor, GradientBoostingDecisionTreeClassifier, GradientBoostingBaseClassificator, GradientBoostingBaseRegressor, GradientBoostingBase
+from .bagging import BaggingDecisionTreeClassifier, BaggingDecisionTreeRegressor, BaggingBaseClassificator, BaggingBaseRegressor, BaggingBase, RandomForestClassifier, RandomForestRegressor

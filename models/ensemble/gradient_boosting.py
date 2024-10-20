@@ -48,8 +48,8 @@ class GradientBoostingBaseClassificator(GradientBoostingBase):
     def _predict_sample(self, X):
         y_pred = 0
 
-        for tree in self.estimators:
-            y_pred += self.learning_rate * tree.predict(X)
+        for estimator in self.estimators:
+            y_pred += self.learning_rate * estimator.predict(X)
         if self.g_probabilities:
             return y_pred
         return y_pred > self.g_threshold
@@ -57,8 +57,8 @@ class GradientBoostingBaseClassificator(GradientBoostingBase):
 class GradientBoostingBaseRegressor(GradientBoostingBase):
     def _predict_sample(self, X):
         y_pred = np.zeros(X.shape[0])
-        for tree in self.estimators:
-            y_pred += self.learning_rate * tree.predict(X)
+        for estimator in self.estimators:
+            y_pred += self.learning_rate * estimator.predict(X)
         return y_pred
 
 
